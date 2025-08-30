@@ -42,5 +42,6 @@ func _on_ui_add_cube():
 	var forward_vector = -camera_basis.z.normalized()
 	var position_2m_ahead = camera.global_transform.origin + (forward_vector * 2.0)
 	var cube = cube_scene.instantiate()
-	add_child(cube)
+	cube.basis = camera.basis
 	cube.position = position_2m_ahead
+	add_child(cube)
