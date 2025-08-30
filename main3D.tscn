@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0n6vtr0gl6l3"]
+
+[ext_resource type="Script" uid="uid://krm7l5q3vdvq" path="res://main3D.gd" id="1_a4ilg"]
+[ext_resource type="PackedScene" uid="uid://cn7yqbotfowti" path="res://cube.tscn" id="2_6hh2s"]
+[ext_resource type="PackedScene" uid="uid://crkvo0dohygke" path="res://ui.tscn" id="3_rflmv"]
+
+[sub_resource type="Environment" id="Environment_p5o4h"]
+background_mode = 5
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_a4ilg")
+cube_scene = ExtResource("2_6hh2s")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+environment = SubResource("Environment_p5o4h")
+current = true
+far = 10.23
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7839, 0.442961, 0.43507, -0.283141, -0.368582, 0.885426, 0.552568, -0.817272, -0.163511, 0, 4.18093, 0)
+light_angular_distance = 90.0
+
+[node name="UI" parent="." instance=ExtResource("3_rflmv")]
+
+[connection signal="add_cube" from="UI" to="." method="_on_ui_add_cube"]
