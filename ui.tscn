@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://crkvo0dohygke"]
+[gd_scene load_steps=2 format=3 uid="uid://068n4a63n2te"]
 
 [ext_resource type="Script" uid="uid://dp53vubuh0gw7" path="res://ui.gd" id="1_gq1yt"]
 
@@ -32,6 +32,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Add cube"
 
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -177.0
+offset_right = 332.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="AddDeskButton" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Add desk"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -61,3 +79,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="pressed" from="MarginContainer/AddCubeButton" to="." method="_on_add_cube_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/AddDeskButton" to="." method="_on_add_desk_button_pressed"]

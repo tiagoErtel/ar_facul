@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0n6vtr0gl6l3"]
+[gd_scene load_steps=6 format=3 uid="uid://b0n6vtr0gl6l3"]
 
 [ext_resource type="Script" uid="uid://krm7l5q3vdvq" path="res://main3D.gd" id="1_a4ilg"]
 [ext_resource type="PackedScene" uid="uid://cn7yqbotfowti" path="res://cube.tscn" id="2_6hh2s"]
-[ext_resource type="PackedScene" uid="uid://crkvo0dohygke" path="res://ui.tscn" id="3_rflmv"]
+[ext_resource type="PackedScene" uid="uid://byt82bw2r57fe" path="res://desk.tscn" id="3_odw2s"]
+[ext_resource type="PackedScene" uid="uid://068n4a63n2te" path="res://ui.tscn" id="3_rflmv"]
 
 [sub_resource type="Environment" id="Environment_p5o4h"]
 background_mode = 5
@@ -10,8 +11,10 @@ background_mode = 5
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_a4ilg")
 cube_scene = ExtResource("2_6hh2s")
+desk_scene = ExtResource("3_odw2s")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 environment = SubResource("Environment_p5o4h")
@@ -25,3 +28,4 @@ light_angular_distance = 90.0
 [node name="UI" parent="." instance=ExtResource("3_rflmv")]
 
 [connection signal="add_cube" from="UI" to="." method="_on_ui_add_cube"]
+[connection signal="add_desk" from="UI" to="." method="_on_ui_add_desk"]

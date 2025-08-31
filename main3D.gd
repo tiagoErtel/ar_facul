@@ -6,6 +6,7 @@ var _android_plugin
 var original_light_trsf: Transform3D;
 
 @export var cube_scene : PackedScene
+@export var desk_scene: PackedScene
 
 @onready var camera = $XROrigin3D/XRCamera3D
 
@@ -42,6 +43,18 @@ func _on_ui_add_cube():
 	var forward_vector = -camera_basis.z.normalized()
 	var position_2m_ahead = camera.global_transform.origin + (forward_vector * 2.0)
 	var cube = cube_scene.instantiate()
-	cube.basis = camera.basis
+	cube.rotation.y = camera.rotation.y
 	cube.position = position_2m_ahead
+	cube.position.y = 0
 	add_child(cube)
+
+
+func _on_ui_add_desk() -> void:
+	var camera_basis = camera.global_transform.basis
+	var forward_vector = -camera_basis.z.normalized()
+	var position_2m_ahead = camera.global_transform.origin + (forward_vector * 2.0)
+	var desk = desk_scene.instantiate()
+	desk.rotation.y = camera.rotation.y
+	desk.position = position_2m_ahead
+	desk.position.y = 0
+	add_child(desk)
